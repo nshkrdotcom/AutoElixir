@@ -20,7 +20,7 @@ defmodule AutoElixir.MixProject do
 
   defp deps do
     [
-      {:langchain, git: "https://github.com/brainlid/langchain.git"},
+      {:langchain, git: "https://github.com/nshkrdotcom/langchain.git"},
       {:jason, "~> 1.4"},
       {:req, "~> 0.5"},
       {:ecto, "~> 3.10"}
