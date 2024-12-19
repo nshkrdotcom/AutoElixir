@@ -1,6 +1,6 @@
-defmodule AutoElixir.LLM do
+defmodule AutoElixir.MockLLM do
   @moduledoc """
-  LLM module that integrates with Google's Gemini model through LangChain.
+  Mock LLM module for testing the agent framework.
   """
 
   @doc """
@@ -35,27 +35,15 @@ defmodule AutoElixir.LLM do
   end
 
   @doc """
-  Sends a prompt to the Gemini model and returns the response.
+  Mock LLM completion that returns predefined responses for testing.
   """
-  def complete(prompt, opts \\ []) do
-    config = %{
-      model: opts[:model] || "gemini-pro",
-      temperature: opts[:temperature] || 0.7
-    }
-
-    with {:ok, llm} <- LangChain.ChatModels.ChatGoogleAI.new(config),
-         {:ok, response} <- LangChain.ChatModels.ChatGoogleAI.call(llm, prompt) do
-      case response do
-        %LangChain.Message{content: content} -> {:ok, content}
-        _ -> {:error, "Unexpected response format"}
-      end
-    else
-      {:error, reason} -> {:error, reason}
-    end
+  def complete(prompt, _opts \\ []) do
+    # For testing, just echo back the prompt
+    {:ok, "Response to: " <> prompt}
   end
 
   @doc """
-  Executes a chain of prompts using the Gemini model.
+  Executes a chain of prompts using mock responses.
   """
   def execute_chain(steps, initial_vars) do
     steps

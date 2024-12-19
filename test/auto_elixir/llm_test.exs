@@ -1,6 +1,6 @@
 defmodule AutoElixir.LLMTest do
   use ExUnit.Case
-  alias AutoElixir.LLM
+  alias AutoElixir.MockLLM, as: LLM
 
   describe "format_prompt/2" do
     test "formats a simple prompt with variables" do

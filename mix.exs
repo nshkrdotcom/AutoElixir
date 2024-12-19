@@ -20,10 +20,12 @@ defmodule AutoElixir.MixProject do
 
   defp deps do
     [
-      {:langchain, git: "https://github.com/nshkrdotcom/langchain.git"},
+      {:langchain, path: "../langchain"},
       {:jason, "~> 1.4"},
-      {:req, "~> 0.5"},
-      {:ecto, "~> 3.10"}
+      {:req, "~> 0.4"},
+      {:ecto, "~> 3.10"},
+      {:dotenv, "~> 3.0.0", only: [:dev, :test]},
+      {:nx, "~> 0.7.0"}  # Required for LangChain's Bumblebee support
     ]
   end
 end
